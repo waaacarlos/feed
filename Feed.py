@@ -10,7 +10,8 @@ load_dotenv()
 
 
 class Feed:
-    STATE_FILE = Path("state.json")
+    abs_file_path = os.path.dirname(__file__)
+    STATE_FILE = Path(f'{abs_file_path}/state.json')
 
     def __init__(self):
         self.url = os.getenv("FEED_URL")
