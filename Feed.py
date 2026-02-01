@@ -61,6 +61,10 @@ class Feed:
 
     # ---------- LOOP ----------
     async def run(self):
+        await self.bot.send_message(
+            chat_id=self.chat_id,
+            text="Bus Feed"
+        )
         while True:
             feed = feedparser.parse(self.url)
 
