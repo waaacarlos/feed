@@ -23,9 +23,8 @@ jobs:
       - name: Deploy
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-            cd /home/azureuser/projects/bus
+            cd /home/azureuser/projects/busfeed
             git fetch origin
             git checkout master
             git pull origin master
-            sudo systemctl restart startpy.service
           EOF
