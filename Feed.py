@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 import html
 
+import time
 
 load_dotenv()
 
@@ -65,6 +66,9 @@ class Feed:
     # ---------- LOOP ----------
     async def run(self):
         while True:
+            if time.localtime().tm_hour >= 22 or time.localtime().tm_hour < 8:
+                await asyncio.sleep(3600)
+                continue
             feed = feedparser.parse(self.url)
 
             new_entries = self.get_new_entries(feed)
