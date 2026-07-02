@@ -24,7 +24,7 @@ jobs:
       - name: Deploy
         run: |
           ssh -i ~/.ssh/busfeed ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-            cd /home/azureuser/projects/busfeed
+            cd /home/{{secrets.SSH_USER}}/projects/busfeed
             git fetch origin
             git checkout master
             git pull origin master

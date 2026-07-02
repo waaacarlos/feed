@@ -5,6 +5,8 @@ import feedparser
 from telegram import Bot
 import os
 from dotenv import load_dotenv
+import html
+
 
 load_dotenv()
 
@@ -52,7 +54,7 @@ class Feed:
         link = entry.get("link", "")
         description = entry.get("description", "").replace("&#8230;", "...")
 
-        msg = f"*{title}*\n{description}\n{link}"
+        msg = f"*{title}*\n{html.unescape(description)}\n{link}"
 
         await self.bot.send_message(
             chat_id=self.chat_id,
