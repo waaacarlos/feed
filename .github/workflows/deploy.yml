@@ -24,7 +24,7 @@ jobs:
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           set -e
-          cd /home/${{ secrets.SSH_USER }}/projects/busfeed
+          cd /home/${{ secrets.SSH_USER }}/projects/feed
           git pull origin main
 
           sudo systemctl restart startpy.service
